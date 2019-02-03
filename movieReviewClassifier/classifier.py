@@ -56,6 +56,48 @@ history = model.fit(partial_x_train,
                     validation_data=[x_val,y_val])
 
 
+#=========================PLOTTING THE ;LOSSES VS ACCURACY=============
+#=================== TRAINING vs VALIDATION LOSSES
+import matplotlib.pyplot as plt
+
+history_dict = history.history
+loss_values = history_dict['loss']
+val_loss_values = history_dict['val_loss']
+
+epochs = range(1,21)
+
+plt.plot(epochs,loss_values,'bo',label='Training loss')
+plt.plot(epochs,val_loss_values,'b',label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('loss')
+plt.legend()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
