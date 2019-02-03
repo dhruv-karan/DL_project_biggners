@@ -23,7 +23,7 @@ def vectorise_sequence(sequence,dimension=10000):
 x_train = vectorise_sequence(train_images)
 y_test = vectorise_sequence(test_images)
 
-y_train = np.asarray(train_labels).astype('float32')
+x_test = np.asarray(train_labels).astype('float32')
 y_test = np.asarray(test_labels).astype('float32')
 
 #============================ DEFINING MODEL===========================
@@ -45,8 +45,8 @@ model.compile(optimizer='rmsprop',
 x_val = x_train[:10000]
 partial_x_train = x_train[10000:]
 
-y_val = y_train[:10000]
-partial_y_train = y_train[10000:]
+y_val = x_test[:10000]
+partial_y_train = y_test[10000:]
 
 #======================= FITTING THE MODEL====================
 history = model.fit(partial_x_train,
@@ -75,7 +75,21 @@ plt.legend()
 plt.show()
 
 
+#=================== TRAINING vs VALIDATION accutracy
+plt.clf()
+acc_values = history_dict['acc']
+val_acc_values = history_dict['val_acc']
 
+plt.plot(epochs,acc_values,'bo',label='Training acc')
+plt.plot(epochs,val_acc_values,'b',label='Validation acc')
+plt.title('Training and validation acc')
+plt.xlabel('Epochs')
+plt.ylabel('loss')
+plt.legend()
+plt.show()
+
+#================= Evaluting the model =======================
+results = model.evaluate(x_test,y_test)
 
 
 
