@@ -20,8 +20,8 @@ def vectorise_sequence(sequence,dimension=10000):
         result[i,sequen] = 1
     return result
 
-train_images = vectorise_sequence(train_images)
-test_images = vectorise_sequence(test_images)
+x_train = vectorise_sequence(train_images)
+y_test = vectorise_sequence(test_images)
 
 y_train = np.asarray(train_labels).astype('float32')
 y_test = np.asarray(test_labels).astype('float32')
@@ -40,4 +40,26 @@ model.compile(optimizer='rmsprop',
               loss='binary_crossentropy',
               metrics=['accuracy'])
 
-#======================MAKIN
+#======================MAKINGG VALIDATION SET
+
+x_val = x_train[:10000]
+partial_x_train = x_train[10000:]
+
+y_val = y_train[:10000]
+partial_y_train = y_train[10000:]
+
+#======================= FITTING THE MODEL====================
+history = model.fit(partial_x_train,
+                    partial_y_train,
+                    epochs=20,
+                    batch_size=512,
+                    validation_data=[x_val,y_val])
+
+
+
+
+
+
+
+
+
