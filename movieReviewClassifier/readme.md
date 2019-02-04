@@ -13,8 +13,7 @@ The folder contains the Ann classifier on IMDB movie review
 <li>After getting the integer list we, converted it into binary matrix using numpy</li>
 <li>Defining the model: 
 <li> It has 2 hidden layer </li>
-<li> It ha 16 units perlayer </li>
-<li> </li> </li>
+<li> It ha 16 units perlayer </li> </li>
 <li>compiling the model, u should go around and play with loss ad optimiser which present in market    </li>
 <li> Fit the model (play with epoch and see the accuracy on validation set ) when it is ten the model is overfitted </li>
 <li> Plot diagram will be updaing soon </li>
